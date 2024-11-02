@@ -1,4 +1,18 @@
 import type { Site, SocialObjects } from "./types";
+import type { GiscusProps } from "@giscus/react";
+
+export const GISCUS: GiscusProps = {
+  repo: "TranThang-2804/blog",
+  repoId: "R_kgDONI-jOQ",
+  category: "Announcements",
+  categoryId: "DIC_kwDONI-jOc4Cj6Zu",
+  mapping: "pathname",
+  reactionsEnabled: "0",
+  emitMetadata: "0",
+  inputPosition: "bottom",
+  lang: "en",
+  loading: "lazy",
+};
 
 export const SITE: Site = {
   website: "https://blog.tommytran.me", // replace this with your deployed domain
