@@ -25,4 +25,5 @@ export type SocialObjects = {
   href: string;
   active: boolean;
   linkTitle: string;
+  target?: string;
 }[];
