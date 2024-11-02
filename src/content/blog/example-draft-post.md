@@ -1,20 +1,21 @@
 ---
-title: Example Draft Post
-author: Sat Naing
+title: CI Agnostic
+author: Tommy Tran Duc Thang
 pubDatetime: 2022-06-06T04:06:31Z
-slug: example-draft-post
-featured: false
-draft: true
+slug: ci-agnostic
+featured: true
+ogImage: ""
+draft: false
 tags:
-  - TypeScript
-  - Astro
+  - CI/CD
+  - CI Agnostic
+  - Dagger.io
+  - Earthly
 description:
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel
-  fringilla est
+    This blog is for sharing knownledge and how to archive
+    CI Agnostic
+canonicalURL: https://example.org/my-article-was-already-posted-here
 ---
-
-Users cannot see this post because it is in draft.
 
 ## Motivation
 

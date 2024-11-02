@@ -3,6 +3,10 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
+<div>
+  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+</div>
+
 Hi there, I'm Tommy Tran Duc Thang - a Senior DevOps/Cloud/Platform Engineer from Ha Noi,
 Viet Nam, specializing in creating scalable infrastructure solutions for large enterprises,
 primarily on AWS. I'm proficient in developing/designing Internal Developer Portals (IDPs)
@@ -26,10 +30,6 @@ I have strong communication ability in English and team leadership experience, i
 and training DevOps team.
 
 Finally, I'm a neovim/vim enthusiast.
-
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
 
 ## Tech Stack
 Included but not limited to:
