@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Welcome To Tommy' Blog</h1>
+      <h1>Welcome To Tommy's Blog</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -46,6 +46,27 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         about technology, programming, and other things I find interesting. However, most 
         of the content will be about technology, programming, and DevOps/Platform development.
         I hope you enjoy reading my blog and find it helpful.
+      </p>
+      <p>
+      This blog page is built using Astro, and forked from satnaing's template (Shout out to him!)
+      <a 
+        href="https://github.com/satnaing/astro-paper#readme"
+        class="group inline-block hover:text-skin-accent"
+        target="_blank"
+        class="styled-link"
+        >
+        astro-paper
+      </a>.
+      </p>
+      <p>
+      I did some customization to make it more suitable for my blog. You can find the source 
+      code in my repo here:
+      <a 
+        href="https://github.com/TranThang-2804/blog" 
+        target="_blank"
+        >
+        My Blog Source Code
+      </a>
       </p>
       {
         // only display if at least one social link is enabled

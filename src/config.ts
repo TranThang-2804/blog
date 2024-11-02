@@ -14,7 +14,7 @@ export const SITE: Site = {
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   editPost: {
-    url: "https://github.com/satnaing/astro-paper/edit/main/src/content/blog",
+    url: "https://github.com/TranThang-2804/blog/edit/main/src/content/blog",
     text: "Suggest Changes",
     appendFilePath: true,
   },
