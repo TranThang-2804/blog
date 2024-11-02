@@ -3,34 +3,66 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Hi there, I'm Tommy Tran Duc Thang - a Senior DevOps/Cloud/Platform Engineer from Ha Noi,
+Viet Nam, specializing in creating scalable infrastructure solutions for large enterprises,
+primarily on AWS. I'm proficient in developing/designing Internal Developer Portals (IDPs)
+with cloud native solution.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+Recognized as a top performer, I received the FHN (Fsoft Hanoi) Best Performer Award in 2023.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+My expertise includes AWS, Terraform, various DevOps tools, observability stacks, and K8s.
+I'm proficient in Terraform, Cloudformation, Bash, Golang, JS/TS. With excellent understanding,
+and experience for K8s and developing K8s native solution and customizing opensource code (
+e.g: I customized kubevela opensource code).
+
+With extensive CI/CD experience using Jenkins and AWS CodePipeline, I specialize in implementing
+observability platforms like Opentelemetry, Loki, Jaeger, Prometheus, and Grafana, along with 
+knowledge in ELK and Datadog.
+
+I'm experience with creating devkit (development tools for enhancing developer experience) with
+agnostic CI, local development, etc
+
+I have strong communication ability in English and team leadership experience, including building
+and training DevOps team.
+
+Finally, I'm a neovim/vim enthusiast.
 
 <div>
   <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
 </div>
 
 ## Tech Stack
+Included but not limited to:
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+1. Languages
+- Golang
+- TS/JS
 
-## Features
+2. Cloud
+- AWS (Proficient/Expert)
+- GCP
 
-Here are certain features of this site.
+3. K8s
+- K8s Core
+- Writing/Customizing K8s custom/crds controller
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+4. CI/CD
+- Gitlab CI
+- AWS CodePipeline
+- Jenkins
+- Tekton
+- Earthly/Dagger (Agnostic CI)
+- Kaniko/Buildah (Building image in container without docker daemon)
+- ArgoCD
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+5. Platform Engineer
+- Kubevela
+- Crossplane
+- Backstage.io
+
+6. IaC
+- Terraform
+- AWS CDK
+- CloudFormation
+- Helm
+- Cuelang/Gotemplate
