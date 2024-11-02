@@ -1,7 +1,7 @@
 ---
 title: CI Agnostic
 author: Tommy Tran Duc Thang
-pubDatetime: 2022-06-06T04:06:31Z
+pubDatetime: 2024-11-02T08:02:27Z 
 slug: ci-agnostic
 featured: true
 ogImage: ""
