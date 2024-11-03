@@ -21,7 +21,7 @@ export const SITE: Site = {
   profile: "https://tommytran.dev/",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
   title: "Tommy's Blog",
-  ogImage: "tommy-og.jpg",
+  ogImage: "tommy-og.webp",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 5,
