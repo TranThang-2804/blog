@@ -185,3 +185,11 @@ Licensed under the MIT License, Copyright © 2023
 ---
 
 Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+
+## TIPS
+
+To get current date time, run:
+
+```
+date -u +"%Y-%m-%dT%H:%M:%SZ"
+```

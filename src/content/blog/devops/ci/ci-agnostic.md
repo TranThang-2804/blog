@@ -9,8 +9,8 @@ draft: false
 tags:
   - CI/CD
   - CI Agnostic
-  - Dagger.io
-  - Earthly
+  - dagger.io
+  - earthly
 description:
     This blog is for sharing knownledge and how to archive
     CI Agnostic
