@@ -31,35 +31,33 @@ This is my first technical blog, so it may have some errors here and there, so
 please create a **_Suggest Changes_** If you feel like changing any part of this
 blog. Really appreciate it!
 
-As a DevOps/Developer or even for someone who is a Tester/QA I'm pretty sure you
-already get use to the term CI/CD and you may already using something like
-Jenkins, Gitlab CI, Github Action. Have you ever faced the issue where, when you
-try to run some automation/deploy your application but after awhile, just
-randomly it throw some nonsense error after a long run that is not related to
-any of the application. Congratulation, most likely you faced the issue of
-inconsistent CI.
+If you're a DevOps Engineer, Developer, or even a Tester/QA, you're likely
+familiar with CI/CD and may already be using tools like Jenkins, GitLab CI, or
+GitHub Actions. Have you ever encountered an issue where, after a long run, your
+CI/CD pipeline randomly throws errors that aren’t directly related to your
+application? Congratulations, you’ve likely encountered CI inconsistency.
 
-If you are a DevOps enginner or anyone has some experience on developing CI/CD
-then you will know that, each CI Platform will have different way to setup, e.g:
+As a DevOps engineer or developer with experience in CI/CD, you probably know
+that each CI platform has a unique setup. For example:
 
-> Disclaimer: This is only my opinion. But trust me, I used all of them
-> extensively with a deep understanding.
+> Disclaimer: This is only my opinions. But I've used all of these extensively
+> with a deep understanding.
 
-| CI/CD Name       | Format                | Personal Opinion                                                                                                                         |
-| ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Gitlab CI        | .gitlab-ci.yml (Yaml) | Very Good                                                                                                                                |
-| Tekton CI        | K8s manifest (Yaml)   | Not rcm if you don't have indept K8s knowledge and high level skill because this requires a lot of ducktaping to work                    |
-| Github Action    | ./github (Yaml)       | Good                                                                                                                                     |
-| Jenkins          | ClickOps/Java-Groovy  | FUCK OFF - For me Jenkins only good initially - fast but not reliable and dependency versioning is like ass - Please stay away from this |
-| AWS CodePipeline | buildspec.yaml (Yaml) | OK but for some unique cases you may need to do more tricky stuff                                                                        |
+| CI/CD Name       | Format                | Personal Opinion                                                                                                              |
+| ---------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Gitlab CI        | .gitlab-ci.yml (Yaml) | Very Good                                                                                                                     |
+| Tekton CI        | K8s manifest (Yaml)   | Not rcm if you don't have indept K8s knowledge and advance skills because this requires a lot of ducktaping to work           |
+| Github Action    | ./github (Yaml)       | Good                                                                                                                          |
+| Jenkins          | ClickOps/Java-Groovy  | For me Jenkins only good initially - fast but not reliable and dependency versioning is like ass - Please stay away from this |
+| AWS CodePipeline | buildspec.yaml (Yaml) | OK but for some unique cases you may need to do more tricky stuff                                                             |
 
-And all of them are really different compare to each other. Then with a big
-system, it will be very hard for us to migrate from this platform to another,
-and to my experience, I had to a lot of project related with migrating CI
-platform before so it's a pain in the a\*\*. Let me give an example:
+With each platform having different configurations and syntax, migrating a large
+system from one CI platform to another can be very challenging. Having worked on
+numerous CI migration projects, I can say it’s not a simple process. For
+example:
 
-Let's say a **_SIMPLE_** CI for running lint -> build -> push image with NodeJs.
-Here is how it is going to looks like for Jenkins and Gitlab CI:
+Imagine a **_SIMPLE CI_** process to lint -> build -> push an image with
+Node.js. Here’s how it might look in Jenkins versus GitLab CI:
 
 Jenkins Example:
 
@@ -190,19 +188,18 @@ push_image:
   when: on_success
 ```
 
-You already can see they have really different declaration type/syntax/structure
-not to mention other stuff like system integration, and this is only a very very
-simple pipeline. Imagine the workload required when you need to migrate 3000
-pipelines and each pipeline uses different script files sum up to around avg
-1000 script lines PER PIPELINE. Yes, and yes, I've been to those messy projects,
-and there is no way you can migrate them smoothly :D.
+As you can see, each platform has different syntax and structure, not to mention
+other details like system integration. This example represents a very basic
+pipeline. Now, imagine migrating 3,000 pipelines, each with an average of 1,000
+lines of script. Yes, I’ve been there, and it’s a pain in the a\*\*!
 
-Maybe this is too long for an introduction but please understand for me. This is
-the first time a write a technical blog. He he ^^.
+This introduction may seem long, but please bear with me—it’s my first time
+writing a technical blog. 😊
 
 ## III. Problems To Solve
 
-From the introduction we can list out the problems really common for CI systems:
+From the introduction we can list out the problems that are really common for CI
+systems:
 
 - Inconsistent between environment (Local/Other Environments)
 - Hard to maintain when the system grows and has bad engineers doing nonsense
@@ -212,14 +209,14 @@ From the introduction we can list out the problems really common for CI systems:
 
 ## IV. Solution
 
-So this blog I will present a term for you which will solve all of the problems
-above with **_CI AGNOSTIC_**.
+So this blog I will present a term for you which will address the problems above
+with **_CI AGNOSTIC_**.
 
 ### 1. What is CI Agnostic?
 
-CI Agnostic basically embracing the value of Containerization. Instead of
-leaving the CI declaration to CI Platform we do it by declaring the steps it
-gonna do in a container.
+CI agnosticism embraces containerization, shifting CI declarations from
+platform-specific configurations to isolated and standalone containerized
+environments.
 
 With the old traditional way:
 ![Traditional Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic.png)
@@ -233,21 +230,17 @@ Agnostic way:
 > We will declare CI in containerized environment. And both local machine and
 > Remote CI platform can just execute this same containerized environment.
 
-This will solve the problem of inconsistent CI between environments because all
-of them will run in containers. Now Developers can also run the CI directly on
-their local machine to!!! which means there won't be 5000 commits on the
-repository just to do some CI testing.
+This approach solves environment inconsistency since everything runs within
+isolated container environments other than CI platform specific configuration.
+Now developers can run CI locally, knowing it will work the same way in other
+environments. This reduces errors, speeds up feedback, and shortens delivery
+time.
 
-Able to run CI on local and knowing that it will run exactly the same on other
-env -> less prone to error, faster feed back loop -> FASTER DELIVERY TIME
+Additionally, moving CI processes between platforms becomes easier, which is why
+it’s called CI Agnostic.
 
-Not only That, it will be very easy to move our CI workload to a different
-platform with ease. That's why it's called **_CI Agnostic_**
-
-But that is not easy solve just buy putting everything into the Dockerfile (You
-still can do this but it will have a lot problem with performance/caching and
-hard to handle difficult logic). Fortunately, on the market right now, there are
-a few tools that support us to achieve CI Agnostic.
+However, achieving this isn’t as simple as creating a Dockerfile. Fortunately,
+there are several tools available to help.
 
 ### 2. Available Tools And Technologies
 
@@ -255,7 +248,7 @@ All of the tools I listed here are opensource :D btw.
 
 | Name        | Complexity   | Declaration Language                   | Community Support | Personal Opinion                                                                                                                                              |
 | ----------- | ------------ | -------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dagger.io   | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on if the team skill level is not high                                                                                          |
+| Dagger.io   | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on and required a skilled team                                                                                                  |
 | Earthly.dev | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
 | Batect      | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
 
@@ -264,9 +257,8 @@ community and more functionalities/features.
 
 ### 3. How Do They Work?
 
-For the case of Dagger.io and Earthly, both of them use Buildkit behind the
-scence and having same approach and only just slightly different in the
-declaration way:
+Both Dagger.io and Earthly use Buildkit behind the scence and having the same
+approach and only just slightly different in the configuration way:
 
 - Dagger.io uses Go/TS/Python to declare the steps/functions
 - Earthly uses its own declarative way which is really easy to catch on (They
@@ -274,14 +266,14 @@ declaration way:
   true)
 
 Both of them will be able to execute all the executions in docker containers.
-And they can utilize buildkit to better utilizing caching and performance. For
-the context of the blog, explaining buildkit will be too long. So just don't
-care about it right now :D. I may create another blog just for that topic
+And they can utilize buildkit for better utilize caching and performance. For
+the context of the blog, explaining buildkit will be beyond the scope. So just
+don't care about it right now :D. I may create another blog just for that topic
 
 ### 3. Demo example
 
-The demo I gonna do today is from my another repo I'm working on to write a K8s
-Controller.
+The demo I gonna use today is from my another repo that I'm working on to write
+a K8s Controller for cloud role integration.
 [K8s Controller Pod Cloud Role Identity](https://github.com/TranThang-2804/k8s-pod-identity-controller)
 
 1. Prerequisites:
@@ -342,11 +334,12 @@ build:
 
 In the file above there will be a few key points:
 
-- The first block of the file looks really like a Dockerfile -> That is the base
+- The first block of the file looks like a Dockerfile -> That is the base
   Dockerfile.
 - Command declarations: ci, lint, test, build.
 - The ci command can refer to other command by using `Build +<command_ref>`.
-- If the command doesn't have `FROM` then it will use the base Dockerfile.
+- Command doesn't have `FROM` directive then it will use the base default
+  Dockerfile.
 - To execute any of the commands you can run `earthly +<command_name>`
 
 4. To run the CI in local:
@@ -389,8 +382,8 @@ build:
 ```
 
 As you can see the step needed to be declare on the CI Platform now really
-simple. Mostly just need to run earthly cli to run the steps. And the output
-will be the same as you running from local or any other machine.
+simple. Mostly just need to run earthly cli to run. And the output will be the
+same as you running from local or any other machine.
 
 And that also the same case for other CI platform integration as well. You just
 need to execute earthly cli from the platform. Which make everything more
@@ -398,13 +391,11 @@ consistence, portable, and easy to maintain.
 
 ## V. Conclusion:
 
-Thank you all for reading my blog to this point. It may a little long and a hard
-topic as well but I would say this also an extremely cool topic with good
-applicable use case that can provide a lot of value.
-
-If you want to modify any part of the blog please feel free to click the
-**_Suggest Changes_** button on top of this blog. I will appreciate it!!! Many
-thanks. See you on the next other cool topics
+Thank you for reading my blog to the end. It’s a bit long and covers a
+challenging topic, but it’s an exciting one with practical applications. If
+you’d like to suggest improvements, please feel free to click **_Suggest
+Changes_** at the top of this blog. Many thanks, and I’ll see you in future
+posts on other cool topics!
 
 ## VI. Reference:
 
