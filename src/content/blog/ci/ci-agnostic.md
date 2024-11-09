@@ -15,7 +15,9 @@ description: This blog is for sharing knownledge and how to archive CI Agnostic
 # canonicalURL: https://example.org/my-article-was-already-posted-here
 ---
 
-## Recommended Background Knowledge
+## Table of contents
+
+## I. Recommended Background Knowledge
 
 - You are DevOps or Developer
 - Familiar with CI
@@ -23,7 +25,7 @@ description: This blog is for sharing knownledge and how to archive CI Agnostic
   Jenkins, ...)
 - Familiar with Docker - Containerization
 
-## Introduction
+## II. Introduction
 
 This is my first technical blog, so it may have some errors here and there, so
 please create a **_Suggest Changes_** If you feel like changing any part of this
@@ -53,7 +55,7 @@ setup, e.g:
 | AWS CodePipeline | buildspec.yaml (Yaml) | OK but for some unique cases you may need to do more tricky stuff                                                                        |
 
 > Disclaimer: This is only my opinion. But trust me, I used all of them
-> extensively at a deep understanding.
+> extensively with a deep understanding.
 
 And all of them are really different compare to each other. Then with a big
 system, it will be very hard for us to migrate from this platform to another,
@@ -199,14 +201,28 @@ pipelines and each pipeline uses different script files sum up to around avg
 1000 script lines PER PIPELINE. Yes, and yes, I been to those messy project, and
 there is no way you can migrate them smoothly :D.
 
-Maybe this is too long for an introduction but please understand for me. This is the first time a write a technical blog. He he ^^.
+Maybe this is too long for an introduction but please understand for me. This is
+the first time a write a technical blog. He he ^^.
 
-## Problem To Solve
+## III. Problems To Solve
+
 From the introduction we can list out the problems really common for CI systems:
-- Inconsistent between environment (Local/Other Environment)
-- Hard to maintain when the system grows and having bad engineers doing nonsense spaghetti
-code
-- Almost impossible to change to other CI platform when the system grew to a certain level
 
-## Suggestion
-So this blog I will present a term for you which will solve all of the problems above
+- Inconsistent between environment (Local/Other Environment)
+- Hard to maintain when the system grows and having bad engineers doing nonsense
+  spaghetti code
+- Almost impossible to change to other CI platform when the system grew to a
+  certain level
+
+## IV. Solution
+
+So this blog I will present a term for you which will solve all of the problems
+above with **_CI AGNOSTIC_**.
+
+### 1. What is CI Agnostic?
+
+CI Agnostic basically embracing the value of Containerization. Instead of
+leaving the CI declaration to CI Platform we do it by declaring the steps it
+gonna do in a container.
+
+This will solve -

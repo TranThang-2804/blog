@@ -1,8 +1,8 @@
 ---
-title: What is Neovim
+title: Look Like A Pro With Neovim
 author: Tommy Tran Duc Thang
 pubDatetime: 2024-11-03T01:18:29Z
-slug: what-is-nvim
+slug: nvim-like-pro
 featured: true
 # ogImage: ""
 draft: false
@@ -16,4 +16,4 @@ description: This blog is for explaining what is neovim
 
 ## Motivation
 
-rec 1
+I'm writing
