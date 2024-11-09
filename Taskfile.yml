@@ -59,6 +59,12 @@ tasks:
     silent: true
     internal: true
 
+  format:
+    desc: Getting into dev shell that has all required tools for development
+    cmds:
+      - yarn run format 
+    silent: true
+
   kiki:
     desc: (Easter Egg)
     cmds:
