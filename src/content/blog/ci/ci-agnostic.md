@@ -225,6 +225,58 @@ CI Agnostic basically embracing the value of Containerization. Instead of
 leaving the CI declaration to CI Platform we do it by declaring the steps it
 gonna do in a container.
 
-<img src="assets/images/ci-agnostic/blog-ci-agnostic.png" alt="Traditional Way Of Doing CI"/>
+With the old traditional way:
+![Traditional Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic.png)
 
-This will solve -
+> We will declare CI in the CI Platform specific language (e.g: .gitlab-ci.yml,
+> buildspec.yml, Jenkinsfile, ...)
+
+Agnostic way:
+![Agnostic Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic-new-approach.png)
+
+> We will declare CI in containerized environment. And both local machine and
+> Remote CI platform can just execute this containerized environment.
+
+This will solve the problem of inconsistent CI between environments because all
+of them will run in containers. Now Developers can also run the CI directly on
+their local machine to!!! which means there won't be 5000 commits on the
+repository just to do some CI testing.
+
+Able to run CI on local and knowing that it will run exactly the same on other
+env -> less prone to error, faster feed back loop -> FASTER DELIVERY TIME
+
+Not only That, it will be very easy to move our CI workload to a different
+platform with ease. That's why it's called **_CI Agnostic_**
+
+But that is not easy solve just buy putting everything into the Dockerfile (You
+still can do this but it will have a lot problem with performance/caching and
+hard to handle hard logic). Fortunately, on the market right now, there are a
+few tools support us to achieve CI Agnostic.
+
+### 2. Available Tools And Technologies
+All of the tools I listed here are opensource :D btw.
+
+| Name      | Complexity   | Declaration Language                   | Community Support | Personal Opinion                                                                                                                                              |
+| --------- | ------------ | -------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dagger.io | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on if the team skill level is not high                                                                                          |
+| Earthly.dev   | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
+| Batect    | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
+
+I would recommend Dagger.io or Earthly since they have more support from the community and more functionalities/features.
+
+### 3. How Do They Work?
+
+For the case of Dagger.io and Earthly, both of them use Buildkit behind the scence and having same approach and only just slightly different in the declaration way:
+- Dagger.io uses Go/TS/Python to declare the steps/functions
+- Earthly uses its own declarative way which is really easy to catch on (They said Earthly is like makefile and Dockerfile have a baby - And I think it's true)
+
+Both of them for every execution will be able to execute in a docker container. And they can utilize buildkit to better utilizing caching and performance. For the context of the blog explaining buildkit will be too long. So just don't care about it right now :D. I may create another blog just for that topic
+
+### 3. Demo example
+The demo I gonna do today is from my another repo I'm working on to write a K8s Controller.
+
+[K8s Controller Pod Cloud Role Identity](https://github.com/TranThang-2804/k8s-pod-identity-controller)
+
+1. Prerequisites:
+- Golang (v1.22.3)
+- Earthly (latest)
