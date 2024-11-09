@@ -273,10 +273,23 @@ For the case of Dagger.io and Earthly, both of them use Buildkit behind the scen
 Both of them for every execution will be able to execute in a docker container. And they can utilize buildkit to better utilizing caching and performance. For the context of the blog explaining buildkit will be too long. So just don't care about it right now :D. I may create another blog just for that topic
 
 ### 3. Demo example
-The demo I gonna do today is from my another repo I'm working on to write a K8s Controller.
+The demo I gonna do today is from my another repo I'm working on to write a K8s Controller. Maybe it's 
 
 [K8s Controller Pod Cloud Role Identity](https://github.com/TranThang-2804/k8s-pod-identity-controller)
 
 1. Prerequisites:
 - Golang (v1.22.3)
 - Earthly (latest)
+
+2. Clone the repository
+```sh
+git clone https://github.com/TranThang-2804/k8s-pod-identity-controller.git
+```
+
+3. You will notice that in the repository, there already an Earthfile so you don't have to do anything.
+Here is the content of the Earthfile:
+
+
+
+## V. Reference:
+
