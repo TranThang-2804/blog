@@ -8,10 +8,15 @@ featured: false
 draft: true
 tags:
   - FAQ
-description: How you can add an 'Estimated Reading time' in your blog posts of AstroPaper.
+description:
+  How you can add an 'Estimated Reading time' in your blog posts of AstroPaper.
 ---
 
-As the [Astro docs](https://docs.astro.build/en/recipes/reading-time/) say, we can use remark plugin to add a reading time property in our frontmatter. However, for some reason, we can't add this feature by following what stated in Astro docs. Therefore, to achieve this, we have to tweak a little bit. This post will demonstrate how we can do that.
+As the [Astro docs](https://docs.astro.build/en/recipes/reading-time/) say, we
+can use remark plugin to add a reading time property in our frontmatter.
+However, for some reason, we can't add this feature by following what stated in
+Astro docs. Therefore, to achieve this, we have to tweak a little bit. This post
+will demonstrate how we can do that.
 
 ## Table of contents
 
@@ -87,7 +92,8 @@ const blog = defineCollection({
 export const collections = { blog };
 ```
 
-Step (5) Create a new file called `getPostsWithRT.ts` under `src/utils` directory.
+Step (5) Create a new file called `getPostsWithRT.ts` under `src/utils`
+directory.
 
 ```ts
 import type { CollectionEntry } from "astro:content";
@@ -131,7 +137,8 @@ const getPostsWithRT = async (posts: CollectionEntry<"blog">[]) => {
 export default getPostsWithRT;
 ```
 
-Step (6) Refactor `getStaticPaths` of `/src/pages/posts/[slug]/index.astro` as the following
+Step (6) Refactor `getStaticPaths` of `/src/pages/posts/[slug]/index.astro` as
+the following
 
 ```ts
 ---
@@ -155,7 +162,8 @@ export async function getStaticPaths() {
 // other codes
 ```
 
-Step (7) Refactor `PostDetails.astro` like this. Now you can access and display `readingTime` in `PostDetails.astro`
+Step (7) Refactor `PostDetails.astro` like this. Now you can access and display
+`readingTime` in `PostDetails.astro`
 
 ```ts
 ---
@@ -183,7 +191,11 @@ const {
 
 ## Access reading time outside of PostDetails (optional)
 
-By following the previous steps, you can now access `readingTime` frontmatter property in you post details page. Sometimes, this is exactly what you want. If so, you can skip to the next section. However, if you want to display "estimated reading time" in index, posts, and technically everywhere, you need to do the following extra steps.
+By following the previous steps, you can now access `readingTime` frontmatter
+property in you post details page. Sometimes, this is exactly what you want. If
+so, you can skip to the next section. However, if you want to display "estimated
+reading time" in index, posts, and technically everywhere, you need to do the
+following extra steps.
 
 Step (1) Update `utils/getSortedPosts.ts` as the following
 
@@ -210,7 +222,8 @@ const getSortedPosts = async (posts: CollectionEntry<"blog">[]) => {
 export default getSortedPosts;
 ```
 
-Step (2) Make sure to refactor every file which uses `getSortedPosts` function. You can simply add `await` keyword in front of `getSortedPosts` function.
+Step (2) Make sure to refactor every file which uses `getSortedPosts` function.
+You can simply add `await` keyword in front of `getSortedPosts` function.
 
 Files that use `getSortedPosts` function are as follow
 
@@ -228,7 +241,8 @@ const sortedPosts = getSortedPosts(posts); // old code ❌
 const sortedPosts = await getSortedPosts(posts); // new code ✅
 ```
 
-Now, `getPostsByTag` function becomes an async function. Therefore, we needs to `await` the `getPostsByTag` function too.
+Now, `getPostsByTag` function becomes an async function. Therefore, we needs to
+`await` the `getPostsByTag` function too.
 
 - src/pages/tags/[tag]/[page].astro
 - src/pages/tags/[tag]/index.astro
@@ -238,7 +252,8 @@ const postsByTag = getPostsByTag(posts, tag); // old code ❌
 const postsByTag = await getPostsByTag(posts, tag); // new code ✅
 ```
 
-Moreover, update the `getStaticPaths` of `src/pages/tags/[tag]/[page].astro` like this:
+Moreover, update the `getStaticPaths` of `src/pages/tags/[tag]/[page].astro`
+like this:
 
 ```ts
 export async function getStaticPaths() {
@@ -267,9 +282,12 @@ Now you can access `readingTime` in other places besides `PostDetails`
 
 ## Displaying reading time (optional)
 
-Since you can now access `readingTime` in your post details (or everywhere if you do the above section), it's up to you to display `readingTime` wherever you want.
+Since you can now access `readingTime` in your post details (or everywhere if
+you do the above section), it's up to you to display `readingTime` wherever you
+want.
 
-But in this section, I'm gonna show you how I would display `readingTime` in my components. This is optional. You can ignore this section if you want.
+But in this section, I'm gonna show you how I would display `readingTime` in my
+components. This is optional. You can ignore this section if you want.
 
 Step (1) Update `Datetime` component to display `readingTime`
 
@@ -339,6 +357,9 @@ file: PostDetails.tsx
 
 ## Conclusion
 
-By following the provided steps and tweaks, you can now incorporate this useful feature into your content. I hope this post helps you adding `readingTime` in your blog. AstroPaper might include reading time by default in future releases. 🤷🏻‍♂️
+By following the provided steps and tweaks, you can now incorporate this useful
+feature into your content. I hope this post helps you adding `readingTime` in
+your blog. AstroPaper might include reading time by default in future releases.
+🤷🏻‍♂️
 
 Kyay Zuu for Reading 🙏🏻
