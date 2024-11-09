@@ -20,7 +20,7 @@ and experience for K8s and developing K8s native solution and customizing openso
 e.g: I customized kubevela opensource code).
 
 With extensive CI/CD experience using Jenkins and AWS CodePipeline, I specialize in implementing
-observability platforms like Opentelemetry, Loki, Jaeger, Prometheus, and Grafana, along with 
+observability platforms like Opentelemetry, Loki, Jaeger, Prometheus, and Grafana, along with
 knowledge in ELK and Datadog.
 
 I'm experience with creating devkit (development tools for enhancing developer experience) with
@@ -32,21 +32,26 @@ and training DevOps team.
 Finally, I'm a neovim/vim enthusiast.
 
 ## Tech Stack
+
 Included but not limited to:
 
 1. Languages
+
 - Golang
 - TS/JS
 
 2. Cloud
+
 - AWS (Proficient/Expert)
 - GCP
 
 3. K8s
+
 - K8s Core
 - Writing/Customizing K8s custom/crds controller
 
 4. CI/CD
+
 - Gitlab CI
 - AWS CodePipeline
 - Jenkins
@@ -56,11 +61,13 @@ Included but not limited to:
 - ArgoCD
 
 5. Platform Engineer
+
 - Kubevela
 - Crossplane
 - Backstage.io
 
 6. IaC
+
 - Terraform
 - AWS CDK
 - CloudFormation

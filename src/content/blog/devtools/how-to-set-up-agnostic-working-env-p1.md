@@ -12,9 +12,8 @@ tags:
   - nix
   - dotfiles
   - home-manager
-description:
-    This blog is for sharing how to archive development env
-    exactly the same across platform
+description: This blog is for sharing how to archive development env
+  exactly the same across platform
 # canonicalURL: https://example.org/my-article-was-already-posted-here
 ---
 

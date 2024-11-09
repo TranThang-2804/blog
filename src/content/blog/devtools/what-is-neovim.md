@@ -10,8 +10,7 @@ tags:
   - nvim
   - devtools
   - texteditor
-description:
-    This blog is for explaining what is neovim
+description: This blog is for explaining what is neovim
 # canonicalURL: https://example.org/my-article-was-already-posted-here
 ---
 

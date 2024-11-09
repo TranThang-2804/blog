@@ -2,7 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
   "packages": [
     "nodejs@18.20.4",
-    "markdownlint-cli2@latest"
+    "markdownlint-cli2@latest",
+    "go-task@latest"
   ],
   "shell": {
     "init_hook": [
