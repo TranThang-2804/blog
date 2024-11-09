@@ -289,7 +289,74 @@ git clone https://github.com/TranThang-2804/k8s-pod-identity-controller.git
 3. You will notice that in the repository, there already an Earthfile so you don't have to do anything.
 Here is the content of the Earthfile:
 
+```
+VERSION 0.8
+FROM golang:latest
+LABEL maintainer="Tommy Tran Duc Thang <tranthang.dev@gmail.com>"
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY ./*.go ./
+COPY ./pkg ./pkg
 
+ci:
+    FROM alpine:latest
+    ARG IMAGE_NAME='k8s-pod-identity-controller'
+    ARG TAG='latest'
+    RUN echo "Starting CI..."
+    BUILD +lint
+    BUILD +test
+    BUILD --pass-args +build
+
+lint:
+    FROM golangci/golangci-lint:latest
+    RUN echo "Starting Linting..."
+    COPY ./*.go ./
+    COPY ./pkg ./pkg
+    CMD ["golangci-lint", "run", "-v"] 
+
+test:
+    RUN echo "Starting Testing..."
+    RUN go test ./...
+
+build:
+    RUN echo "Starting Building..."
+    ARG IMAGE_NAME
+    ARG TAG
+    RUN go build -o main .
+    EXPOSE 8080
+    CMD ["./main"]
+    SAVE IMAGE $IMAGE_NAME:$TAG
+```
+>Note: You also can notice there is no Dockerfile because Earthfile already replaced it
+
+
+In the file above there will be a few key points:
+- The first block of the file looks really like a Dockerfile -> That is the base Dockerfile.
+- Command declarations: ci, lint, test, build.
+- The ci command can refer to other command by using ```Build +<command_ref>```.
+- If the command doesn't have ```FROM``` then it will use the base Dockerfile.
+- To execute any of the commands you can run ```earthly +<command_name>```
+
+4. To run the CI in local:
+```sh
+earthly --ci +ci
+```
+
+The output should looks like this:
+
+
+5. To integrate it with Remote CI Platform
+In this example I will show a sample .gitlab-ci.yml file 
+```yaml
+
+```
+
+As you can see the step needed to be declare on the CI Platform now really simple. Mostly just need to run 
+earthly cli to run the steps. And the output will be the same as you running from local or any other machine.
 
 ## V. Reference:
-
+- Dagger.io:
+- Earthly.dev:
+- Batect
+- Buildkit
