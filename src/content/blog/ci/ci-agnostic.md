@@ -17,6 +17,13 @@ description:
 # canonicalURL: https://example.org/my-article-was-already-posted-here
 ---
 
-## Motivation
+## Introduction
 
-rec 1
+This is my first technical blog, so it may have some errors here and 
+there, so please create a ***Suggest Changes*** If you feel like changing
+any part of this blog. Really appreciate it!
+
+As a DevOps/Developer or even Tester/QA I'm pretty sure you already get use
+to the term CI/CD and you may already using something like Jenkins, Gitlab 
+CI, Github Action, ... But yeah you can see this blog is not just focusing on 
+DevOps point of view, but rather for the experience of everyone using CI/CD
