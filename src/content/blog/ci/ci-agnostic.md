@@ -33,18 +33,17 @@ blog. Really appreciate it!
 
 As a DevOps/Developer or even for someone who is a Tester/QA I'm pretty sure you
 already get use to the term CI/CD and you may already using something like
-Jenkins, Gitlab CI, Github Action, ... But this blog is not just focusing on
-DevOps point of view, but rather for the experience of everyone who is using
-CI/CD.
+Jenkins, Gitlab CI, Github Action. Have you ever faced the issue where, when you
+try to run some automation/deploy your application but after awhile, just
+randomly it throw some nonsense error after a long run that is not related to
+any of the application. Congratulation, most likely you faced the issue of
+inconsistent CI.
 
-Have you ever faced the issue where, when you try to run some automation/deploy
-your application but after awhile, just randomly it throw some nonsense error
-after a long run that is not related to any of the application. Congratulation,
-most likely you faced the issue of inconsistent CI.
+If you are a DevOps enginner or anyone has some experience on developing CI/CD
+then you will know that, each CI Platform will have different way to setup, e.g:
 
-Or if you are a DevOps enginner or anyone has some experience on developing
-CI/CD then you will know that, each CI Platform will have different way to
-setup, e.g:
+> Disclaimer: This is only my opinion. But trust me, I used all of them
+> extensively with a deep understanding.
 
 | CI/CD Name       | Format                | Personal Opinion                                                                                                                         |
 | ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -53,9 +52,6 @@ setup, e.g:
 | Github Action    | ./github (Yaml)       | Good                                                                                                                                     |
 | Jenkins          | ClickOps/Java-Groovy  | FUCK OFF - For me Jenkins only good initially - fast but not reliable and dependency versioning is like ass - Please stay away from this |
 | AWS CodePipeline | buildspec.yaml (Yaml) | OK but for some unique cases you may need to do more tricky stuff                                                                        |
-
-> Disclaimer: This is only my opinion. But trust me, I used all of them
-> extensively with a deep understanding.
 
 And all of them are really different compare to each other. Then with a big
 system, it will be very hard for us to migrate from this platform to another,
@@ -198,8 +194,8 @@ You already can see they have really different declaration type/syntax/structure
 not to mention other stuff like system integration, and this is only a very very
 simple pipeline. Imagine the workload required when you need to migrate 3000
 pipelines and each pipeline uses different script files sum up to around avg
-1000 script lines PER PIPELINE. Yes, and yes, I been to those messy project, and
-there is no way you can migrate them smoothly :D.
+1000 script lines PER PIPELINE. Yes, and yes, I've been to those messy projects,
+and there is no way you can migrate them smoothly :D.
 
 Maybe this is too long for an introduction but please understand for me. This is
 the first time a write a technical blog. He he ^^.
@@ -208,8 +204,8 @@ the first time a write a technical blog. He he ^^.
 
 From the introduction we can list out the problems really common for CI systems:
 
-- Inconsistent between environment (Local/Other Environment)
-- Hard to maintain when the system grows and having bad engineers doing nonsense
+- Inconsistent between environment (Local/Other Environments)
+- Hard to maintain when the system grows and has bad engineers doing nonsense
   spaghetti code
 - Almost impossible to change to other CI platform when the system grew to a
   certain level
@@ -235,7 +231,7 @@ Agnostic way:
 ![Agnostic Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic-new-approach.png)
 
 > We will declare CI in containerized environment. And both local machine and
-> Remote CI platform can just execute this containerized environment.
+> Remote CI platform can just execute this same containerized environment.
 
 This will solve the problem of inconsistent CI between environments because all
 of them will run in containers. Now Developers can also run the CI directly on
@@ -250,44 +246,56 @@ platform with ease. That's why it's called **_CI Agnostic_**
 
 But that is not easy solve just buy putting everything into the Dockerfile (You
 still can do this but it will have a lot problem with performance/caching and
-hard to handle hard logic). Fortunately, on the market right now, there are a
-few tools support us to achieve CI Agnostic.
+hard to handle difficult logic). Fortunately, on the market right now, there are
+a few tools that support us to achieve CI Agnostic.
 
 ### 2. Available Tools And Technologies
+
 All of the tools I listed here are opensource :D btw.
 
-| Name      | Complexity   | Declaration Language                   | Community Support | Personal Opinion                                                                                                                                              |
-| --------- | ------------ | -------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dagger.io | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on if the team skill level is not high                                                                                          |
-| Earthly.dev   | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
-| Batect    | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
+| Name        | Complexity   | Declaration Language                   | Community Support | Personal Opinion                                                                                                                                              |
+| ----------- | ------------ | -------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dagger.io   | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on if the team skill level is not high                                                                                          |
+| Earthly.dev | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
+| Batect      | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
 
-I would recommend Dagger.io or Earthly since they have more support from the community and more functionalities/features.
+I would recommend Dagger.io or Earthly since they have more support from the
+community and more functionalities/features.
 
 ### 3. How Do They Work?
 
-For the case of Dagger.io and Earthly, both of them use Buildkit behind the scence and having same approach and only just slightly different in the declaration way:
-- Dagger.io uses Go/TS/Python to declare the steps/functions
-- Earthly uses its own declarative way which is really easy to catch on (They said Earthly is like makefile and Dockerfile have a baby - And I think it's true)
+For the case of Dagger.io and Earthly, both of them use Buildkit behind the
+scence and having same approach and only just slightly different in the
+declaration way:
 
-Both of them for every execution will be able to execute in a docker container. And they can utilize buildkit to better utilizing caching and performance. For the context of the blog explaining buildkit will be too long. So just don't care about it right now :D. I may create another blog just for that topic
+- Dagger.io uses Go/TS/Python to declare the steps/functions
+- Earthly uses its own declarative way which is really easy to catch on (They
+  said Earthly is like makefile and Dockerfile have a baby - And I think it's
+  true)
+
+Both of them will be able to execute all the executions in docker containers.
+And they can utilize buildkit to better utilizing caching and performance. For
+the context of the blog, explaining buildkit will be too long. So just don't
+care about it right now :D. I may create another blog just for that topic
 
 ### 3. Demo example
-The demo I gonna do today is from my another repo I'm working on to write a K8s Controller. Maybe it's 
 
+The demo I gonna do today is from my another repo I'm working on to write a K8s
+Controller.
 [K8s Controller Pod Cloud Role Identity](https://github.com/TranThang-2804/k8s-pod-identity-controller)
 
 1. Prerequisites:
-- Golang (v1.22.3)
+
 - Earthly (latest)
 
 2. Clone the repository
+
 ```sh
 git clone https://github.com/TranThang-2804/k8s-pod-identity-controller.git
 ```
 
-3. You will notice that in the repository, there already an Earthfile so you don't have to do anything.
-Here is the content of the Earthfile:
+3. You will notice that in the repository, there is already an Earthfile so you
+   don't have to do anything. Here is the content of the Earthfile:
 
 ```
 VERSION 0.8
@@ -313,7 +321,7 @@ lint:
     RUN echo "Starting Linting..."
     COPY ./*.go ./
     COPY ./pkg ./pkg
-    CMD ["golangci-lint", "run", "-v"] 
+    CMD ["golangci-lint", "run", "-v"]
 
 test:
     RUN echo "Starting Testing..."
@@ -328,35 +336,79 @@ build:
     CMD ["./main"]
     SAVE IMAGE $IMAGE_NAME:$TAG
 ```
->Note: You also can notice there is no Dockerfile because Earthfile already replaced it
 
+> Note: You also can notice there is no Dockerfile because Earthfile already
+> replaced the need for it
 
 In the file above there will be a few key points:
-- The first block of the file looks really like a Dockerfile -> That is the base Dockerfile.
+
+- The first block of the file looks really like a Dockerfile -> That is the base
+  Dockerfile.
 - Command declarations: ci, lint, test, build.
-- The ci command can refer to other command by using ```Build +<command_ref>```.
-- If the command doesn't have ```FROM``` then it will use the base Dockerfile.
-- To execute any of the commands you can run ```earthly +<command_name>```
+- The ci command can refer to other command by using `Build +<command_ref>`.
+- If the command doesn't have `FROM` then it will use the base Dockerfile.
+- To execute any of the commands you can run `earthly +<command_name>`
 
 4. To run the CI in local:
+
 ```sh
 earthly --ci +ci
 ```
 
+> Note: The first time will longer but from the second time, it would be a lot
+> more faster
+
 The output should looks like this:
+![Output](@assets/images/ci-agnostic/output-2.png)
+![Output](@assets/images/ci-agnostic/output-1.png)
 
+5. To integrate it with Remote CI Platform In this example I will show a sample
+   .gitlab-ci.yml file
 
-5. To integrate it with Remote CI Platform
-In this example I will show a sample .gitlab-ci.yml file 
 ```yaml
+stages:
+  - build
 
+.earthly:
+  image: earthly/earthly
+  variables:
+  before_script:
+    - apk add --no-cache curl
+    - earthly bootstrap
+
+build:
+  stage: build
+  variables:
+    FORCE_COLOR: 1
+    EARTHLY_EXEC_CMD: "/bin/sh"
+  services:
+    - name: docker:24.0.5-dind
+  extends: [.earthly]
+  script:
+    - earthly --ci +ci
 ```
 
-As you can see the step needed to be declare on the CI Platform now really simple. Mostly just need to run 
-earthly cli to run the steps. And the output will be the same as you running from local or any other machine.
+As you can see the step needed to be declare on the CI Platform now really
+simple. Mostly just need to run earthly cli to run the steps. And the output
+will be the same as you running from local or any other machine.
 
-## V. Reference:
-- Dagger.io:
-- Earthly.dev:
-- Batect
-- Buildkit
+And that also the same case for other CI platform integration as well. You just
+need to execute earthly cli from the platform. Which make everything more
+consistence, portable, and easy to maintain.
+
+## V. Conclusion:
+
+Thank you all for reading my blog to this point. It may a little long and a hard
+topic as well but I would say this also an extremely cool topic with good
+applicable use case that can provide a lot of value.
+
+If you want to modify any part of the blog please feel free to click the
+**_Suggest Changes_** button on top of this blog. I will appreciate it!!! Many
+thanks. See you on the next other cool topics
+
+## VI. Reference:
+
+- [Dagger.io](https://dagger.io/)
+- [Earthly.dev](https://earthly.dev/)
+- [Batect.dev](https://batect.dev/)
+- [Buildkit](https://github.com/moby/buildkit)
