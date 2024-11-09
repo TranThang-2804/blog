@@ -225,4 +225,6 @@ CI Agnostic basically embracing the value of Containerization. Instead of
 leaving the CI declaration to CI Platform we do it by declaring the steps it
 gonna do in a container.
 
+<img src="assets/images/ci-agnostic/blog-ci-agnostic.png" alt="Traditional Way Of Doing CI"/>
+
 This will solve -
