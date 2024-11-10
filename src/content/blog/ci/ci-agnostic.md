@@ -43,6 +43,8 @@ that each CI platform has a unique setup. For example:
 > Disclaimer: This is only my opinions. But I've used all of these extensively
 > with a deep understanding.
 
+<div style="overflow-x: scroll;">
+
 | CI/CD Name       | Format                | Personal Opinion                                                                                                              |
 | ---------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Gitlab CI        | .gitlab-ci.yml (Yaml) | Very Good                                                                                                                     |
@@ -50,6 +52,8 @@ that each CI platform has a unique setup. For example:
 | Github Action    | ./github (Yaml)       | Good                                                                                                                          |
 | Jenkins          | ClickOps/Java-Groovy  | For me Jenkins only good initially - fast but not reliable and dependency versioning is like ass - Please stay away from this |
 | AWS CodePipeline | buildspec.yaml (Yaml) | OK but for some unique cases you may need to do more tricky stuff                                                             |
+
+</div>
 
 With each platform having different configurations and syntax, migrating a large
 system from one CI platform to another can be very challenging. Having worked on
@@ -246,11 +250,15 @@ there are several tools available to help.
 
 All of the tools I listed here are opensource :D btw.
 
+<div style="overflow-x: scroll;">
+
 | Name        | Complexity   | Declaration Language                   | Community Support | Personal Opinion                                                                                                                                              |
 | ----------- | ------------ | -------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Dagger.io   | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on and required a skilled team                                                                                                  |
 | Earthly.dev | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
 | Batect      | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
+
+</div>
 
 I would recommend Dagger.io or Earthly since they have more support from the
 community and more functionalities/features.
