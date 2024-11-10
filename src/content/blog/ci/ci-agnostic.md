@@ -222,15 +222,18 @@ CI agnosticism embraces containerization, shifting CI declarations from
 platform-specific configurations to isolated and standalone containerized
 environments.
 
-With the old traditional way:
-![Traditional Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic.png)
-<img src="https://blog.tommytran.me/assets/ci-agnostic/blog-ci-agnostic.png" alt="Traditional Way of doing CI" class="custom-image">
+With the old traditional way: <img 
+    src="/assets/ci-agnostic/blog-ci-agnostic.png" 
+    alt="Traditional Way of doing CI" 
+    class="border-0">
 
 > We will declare CI in the CI Platform specific language (e.g: .gitlab-ci.yml,
 > buildspec.yml, Jenkinsfile, ...)
 
-Agnostic way:
-![Agnostic Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic-new-approach.png)
+Agnostic way: <img 
+    src="/assets/ci-agnostic/blog-ci-agnostic-new-approach.png" 
+    alt="Traditional Way of doing CI" 
+    class="border-0">
 
 > We will declare CI in containerized environment. And both local machine and
 > Remote CI platform can just execute this same containerized environment.
