@@ -224,6 +224,7 @@ environments.
 
 With the old traditional way:
 ![Traditional Way of doing CI](@assets/images/ci-agnostic/blog-ci-agnostic.png)
+<img src="https://blog.tommytran.me/assets/ci-agnostic/blog-ci-agnostic.png" alt="Traditional Way of doing CI" class="custom-image">
 
 > We will declare CI in the CI Platform specific language (e.g: .gitlab-ci.yml,
 > buildspec.yml, Jenkinsfile, ...)
