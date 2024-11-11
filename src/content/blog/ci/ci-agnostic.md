@@ -247,9 +247,10 @@ time.
 Additionally, moving CI processes between platforms becomes easier, which is why
 it’s called CI Agnostic.
 
-You can achieve this just by using native Dockerfile (Put all execution in CI).
-However, this is has some limitation especially with performance/caching and
-step separation. Fortunately, there are several tools available to help.
+You can achieve this just by using native Dockerfile (Put all CI execution in
+the Dockerfile). However, this is has some limitation especially with
+performance/caching and action separation. Fortunately, there are several tools
+available to help.
 
 ### 2. Available Tools And Technologies
 
@@ -262,7 +263,7 @@ All of the tools I listed here are opensource :D btw.
 | Dagger.io   | Medium       | Go/TS/Python                           | Good              | It's good but not easy to get on and required a skilled team                                                                                                  |
 | Earthly.dev | Low - Medium | Earthly syntax (Similar to Dockerfile) | Good              | It's good, easier to catch on compare to Dagger                                                                                                               |
 | Batect      | Easy         | Yaml                                   | Not Maintained    | I like the idea and the way this was implemented really similar to taskfile.dev and the simplicity of it. Anyone can understand without having much knowledge |
-| Dockerfile  | Easy         | Dockerfile format                      | Good              | This can work just fine but you may hit into a few issues like performance and caching as well as step separation                                             |
+| Dockerfile  | Easy         | Dockerfile format                      | Good              | This can work just fine but you may run into a few issues e.g performance and caching as well as action separation                                            |
 
 </div>
 
